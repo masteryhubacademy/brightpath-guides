@@ -2,208 +2,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BrightPath Guides shares practical, beginner-friendly guides on digital skills, productivity, online safety, freelancing, budgeting, and learning habits.">
-  <meta name="theme-color" content="#10213b">
-  <title>BrightPath Guides | Practical Guides for Everyday Life</title>
-  <style>
-    :root {
-      --navy: #10213b;
-      --blue: #2459d3;
-      --light: #f4f7fc;
-      --text: #26344a;
-      --muted: #617087;
-      --border: #e0e7f0;
-      --white: #ffffff;
-    }
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.8;
-    }
-    a { color: var(--blue); }
-    .container { width: min(1080px, 92%); margin: auto; }
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .nav {
-      min-height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 12px 0;
-    }
-    .brand {
-      color: var(--navy);
-      font-size: 22px;
-      font-weight: 800;
-      text-decoration: none;
-      letter-spacing: -.5px;
-    }
-    nav { display: flex; gap: 17px; flex-wrap: wrap; }
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    nav a:hover { color: var(--blue); }
-    .hero {
-      background: linear-gradient(135deg, #10213b, #1f4ba1);
-      color: white;
-      padding: 65px 0 58px;
-    }
-    .eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,.13);
-      padding: 5px 12px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    h1 {
-      font-size: clamp(34px, 6vw, 54px);
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      max-width: 760px;
-      margin: 20px 0;
-    }
-    .hero p { max-width: 700px; color: #e2eaff; font-size: 17px; }
-    .hero-button {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 12px 20px;
-      border-radius: 8px;
-      background: white;
-      color: var(--navy);
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section { padding: 45px 0; }
-    .section-heading { margin-bottom: 22px; }
-    .section-heading h2 {
-      color: var(--navy);
-      font-size: clamp(26px, 4vw, 34px);
-      line-height: 1.3;
-      margin: 0 0 8px;
-    }
-    .section-heading p { margin: 0; color: var(--muted); }
-    .search-box { margin: 22px 0 30px; }
-    #search {
-      width: 100%;
-      padding: 15px 16px;
-      border: 1px solid #cbd6e5;
-      border-radius: 10px;
-      font-size: 16px;
-      background: white;
-      outline-color: var(--blue);
-    }
-    .article {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: clamp(20px, 4vw, 34px);
-      margin: 0 0 24px;
-      box-shadow: 0 5px 22px rgba(16,33,59,.035);
-      scroll-margin-top: 100px;
-    }
-    .article-number {
-      display: inline-block;
-      color: var(--blue);
-      background: #edf2ff;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .article h3 {
-      color: var(--navy);
-      font-size: clamp(22px, 4vw, 28px);
-      line-height: 1.35;
-      margin: 3px 0 12px;
-    }
-    .article h4 {
-      color: var(--navy);
-      font-size: 19px;
-      margin: 23px 0 6px;
-      line-height: 1.45;
-    }
-    .article p { margin: 10px 0; }
-    .article li { margin: 7px 0; padding-left: 3px; }
-    .article ul, .article ol { padding-left: 23px; }
-    .article-meta { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
-    .tip {
-      background: #f0f5ff;
-      border-left: 4px solid var(--blue);
-      padding: 13px 16px;
-      border-radius: 0 8px 8px 0;
-      margin: 18px 0;
-    }
-    .no-results {
-      display: none;
-      background: white;
-      padding: 22px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-    .info-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px;
-    }
-    .info-card h3 { margin-top: 0; color: var(--navy); }
-    .contact-panel {
-      background: var(--navy);
-      color: white;
-      padding: 30px;
-      border-radius: 14px;
-    }
-    .contact-panel h2 { margin-top: 0; }
-    .contact-panel a { color: #bcd0ff; }
-    footer {
-      background: #0b1729;
-      color: #dbe4f3;
-      padding: 28px 0;
-      font-size: 14px;
-    }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 12px; }
-    .footer-links a { color: #dbe4f3; }
-    footer p { margin: 8px 0; }
-    @media (max-width: 600px) {
-      .nav { align-items: flex-start; }
-      nav { gap: 12px; }
-      .hero { padding: 45px 0; }
-      section { padding: 32px 0; }
-      .article { padding: 20px; }
-    }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore practical guides on digital skills, productivity, online safety, freelancing, budgeting and learning habits at BrightPath Guides.">
+<meta name="theme-color" content="#101c35">
+<title>BrightPath Guides | Learn Something Useful Every Day</title>
 
+<style>
+:root {
+  --navy: #101c35;
+  --blue: #315eea;
+  --cyan: #38c6d9;
+  --ink: #24324a;
+  --muted: #65738a;
+  --paper: #f5f7fb;
+  --white: #ffffff;
+  --line: #e0e7f1;
+}
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+}
+a { color: var(--blue); }
+.container { width: min(1080px, 92%); margin: auto; }
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+.brand {
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.7px;
+}
+.brand span { color: var(--blue); }
+nav { display: flex; gap: 18px; flex-wrap: wrap; }
+nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+nav a:hover { color: var(--blue); }
+
+.hero {
+  background: linear-gradient(130deg, #101c35 0%, #1b3d82 68%, #315eea 100%);
+  color: white;
+  padding: 75px 0 68px;
+  position: relative;
+  overflow: hidden;
+}
+.hero:after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 45px solid rgba(255,255,255,.06);
+  border-radius: 50%;
+  right: -90px;
+  top: -80px;
+}
+.eyebrow {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 30px;
+  padding: 5px 13px;
+  color: #c5f7ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+.hero h1 {
+  max-width: 800px;
+  font-size: clamp(36px, 6vw, 59px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+  margin: 23px 0 18px;
+}
+.hero p {
+  color: #e0e9ff;
+  max-width: 700px;
+  font-size: 17px;
+}
+.hero-btn {
+  display: inline-block;
+  background: white;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 800;
+  padding: 13px 20px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+.hero-btn:hover { background: #e6f5ff; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.stat {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 12px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(16,28,53,.06);
+}
+.stat strong {
+  display: block;
+  color: var(--blue);
+  font-size: 23px;
+  line-height: 1.4;
+}
+.stat span { color: var(--muted); font-size: 13px; }
+
+section { padding: 52px 0; }
+.section-top { margin-bottom: 26px; }
+.kicker {
+  text-transform: uppercase;
+  color: var(--blue);
+  font-size: 12px;
+  letter-spacing: 1.7px;
+  font-weight: 900;
+}
+.section-top h2 {
+  color: var(--navy);
+  font-size: clamp(29px, 4vw, 39px);
+  line-height: 1.25;
+  margin: 5px 0 10px;
+  letter-spacing: -.8px;
+}
+.section-top p { color: var(--muted); margin: 0; }
+
+.search-area { margin: 25px 0 32px; }
+#search {
+  display: block;
+  width: 100%;
+  border: 1px solid #cbd5e4;
+  border-radius: 11px;
+  padding: 16px;
+  background: white;
+  font-size: 16px;
+  outline-color: var(--blue);
+}
+.search-note { color: var(--muted); font-size: 12px; margin-top: 7px; }
+
+.article {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 7px 26px rgba(16,28,53,.04);
+  scroll-margin-top: 95px;
+}
+.article-head {
+  padding: 28px clamp(20px, 5vw, 40px);
+  background: linear-gradient(110deg, #edf2ff, #f5fbff);
+  border-bottom: 1px solid var(--line);
+}
+.article-label {
+  display: inline-block;
+  color: white;
+  background: var(--blue);
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+}
+.article h3 {
+  color: var(--navy);
+  font-size: clamp(26px, 4vw, 35px);
+  line-height: 1.25;
+  margin: 13px 0 8px;
+  letter-spacing: -.6px;
+}
+.article-subtitle { color: var(--muted); font-size: 14px; }
+.article-body { padding: 22px clamp(20px, 5vw, 40px) 32px; }
+.article-body p { margin: 10px 0 16px; }
+.article-body h4 {
+  color: #183c85;
+  font-size: 21px;
+  line-height: 1.4;
+  margin: 30px 0 8px;
+  padding-left: 13px;
+  border-left: 4px solid var(--cyan);
+}
+.article-body h5 {
+  color: var(--navy);
+  font-size: 17px;
+  margin: 20px 0 5px;
+}
+.article-body ul, .article-body ol { padding-left: 24px; }
+.article-body li { margin: 8px 0; }
+.highlight {
+  background: #edf5ff;
+  border: 1px solid #d9e8ff;
+  border-radius: 10px;
+  padding: 17px 19px;
+  margin-top: 25px;
+}
+.highlight strong { color: #183c85; }
+.no-results {
+  display: none;
+  background: white;
+  text-align: center;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 17px;
+}
+.info-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 23px;
+}
+.info-card h3 { color: var(--navy); margin-top: 0; }
+.info-card p { margin-bottom: 0; }
+
+.contact-box {
+  background: var(--navy);
+  color: white;
+  padding: 32px;
+  border-radius: 15px;
+}
+.contact-box h2 { font-size: 30px; margin-top: 0; }
+.contact-box a { color: #bde9ff; overflow-wrap: anywhere; }
+footer {
+  background: #0b1426;
+  color: #d8e1f2;
+  padding: 30px 0;
+  font-size: 13px;
+}
+.footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.footer-links a { color: #e0eaff; }
+footer p { margin-bottom: 0; }
+
+@media (max-width: 600px) {
+  .nav { align-items: flex-start; }
+  nav { gap: 12px; }
+  .hero { padding: 50px 0; }
+  .stats { gap: 8px; }
+  .stat { padding: 14px 6px; }
+  .stat strong { font-size: 19px; }
+  .stat span { font-size: 11px; }
+  section { padding: 38px 0; }
+  .article { border-radius: 12px; }
+  .article-head { padding: 23px 20px; }
+  .article-body { padding: 18px 20px 25px; }
+  .article-body h4 { font-size: 19px; margin-top: 25px; }
+  .contact-box { padding: 24px; }
+}
+</style>
+</head>
+
+<body>
 <header>
   <div class="container nav">
-    <a class="brand" href="#home">BrightPath Guides</a>
+    <a class="brand" href="#home">BrightPath <span>Guides</span></a>
     <nav aria-label="Main navigation">
       <a href="#home">Home</a>
-      <a href="#articles">All Articles</a>
+      <a href="#articles">Articles</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -213,149 +300,177 @@
 <main>
   <section class="hero" id="home">
     <div class="container">
-      <span class="eyebrow">PRACTICAL KNOWLEDGE · EVERYDAY GROWTH</span>
-      <h1>Simple Guides to Help You Learn, Grow and Move Forward</h1>
-      <p>Explore practical, beginner-friendly information about digital skills, productivity, online safety, freelancing, personal budgeting, and better learning habits — all on one page.</p>
-      <a class="hero-button" href="#articles">Explore All Articles ↓</a>
+      <span class="eyebrow">KNOWLEDGE FOR EVERYDAY LIFE</span>
+      <h1>Learn Better. Think Smarter. Move Forward.</h1>
+      <p>Explore practical guides designed to help you build useful skills, manage your time, stay safer online, understand money, and keep learning with confidence.</p>
+      <a class="hero-btn" href="#articles">Explore All 6 Guides ↓</a>
     </div>
   </section>
 
+  <div class="container stats">
+    <div class="stat"><strong>06</strong><span>Complete Guides</span></div>
+    <div class="stat"><strong>100%</strong><span>Read on This Page</span></div>
+    <div class="stat"><strong>Free</strong><span>Educational Resources</span></div>
+  </div>
+
   <section id="articles">
     <div class="container">
-      <div class="section-heading">
-        <h2>Explore Our Guides</h2>
-        <p>Every guide is displayed below. You do not need to open a separate article page.</p>
+      <div class="section-top">
+        <span class="kicker">THE KNOWLEDGE LIBRARY</span>
+        <h2>Explore. Learn. Improve.</h2>
+        <p>All six guides are available below. Scroll down to read the complete articles.</p>
       </div>
 
-      <div class="search-box">
-        <input id="search" type="search" placeholder="Search all guides, e.g. freelancing or budgeting..." aria-label="Search articles">
+      <div class="search-area">
+        <input id="search" type="search" placeholder="Search topics: digital skills, freelancing, budgeting..." aria-label="Search all guides">
+        <div class="search-note">Search filters the complete articles on this page.</div>
       </div>
 
       <div id="article-list">
 
-        <article class="article" data-search="digital skills computer internet email typing online learning beginners">
-          <span class="article-number">GUIDE 01</span>
-          <h3>Digital Skills for Beginners</h3>
-          <div class="article-meta">Beginner Guide · Digital Learning</div>
-          <p>Digital skills help people use computers, smartphones, the internet, and online tools to communicate, learn, and complete everyday tasks. You do not need to be an expert to begin. A few basic skills, practised consistently, can make technology much easier to use.</p>
-          <h4>1. Learn the Basics of Your Device</h4>
-          <p>Start by understanding your smartphone or computer. Learn how to open applications, adjust settings, connect to Wi-Fi, organise files, take screenshots, and update software. Practise creating folders and finding saved documents.</p>
-          <h4>2. Improve Your Internet Skills</h4>
-          <p>Learn how to search for reliable information, use browser tabs, download files safely, and recognise official websites. Use specific search phrases rather than typing only one broad word. Compare information from more than one trustworthy source.</p>
-          <h4>3. Use Email Professionally</h4>
-          <p>Create a clear email address and learn how to write a useful subject line, attach documents, reply politely, and check recipients before sending. Avoid sending passwords or sensitive personal information in ordinary emails.</p>
-          <h4>4. Practise Everyday Productivity Tools</h4>
-          <p>Begin with document editors, spreadsheets, presentations, calendars, and cloud storage. Learn to write a simple document, create a basic budget spreadsheet, and organise your tasks in a calendar.</p>
-          <h4>5. Keep Your Digital Life Secure</h4>
-          <ul>
-            <li>Use unique passwords for important accounts.</li>
-            <li>Enable two-factor authentication whenever available.</li>
-            <li>Install updates from official sources.</li>
-            <li>Never share verification codes with strangers.</li>
-            <li>Think carefully before downloading unknown files.</li>
-          </ul>
-          <h4>6. Build Skills Through Practice</h4>
-          <p>Choose one skill at a time. Spend 15–30 minutes a day practising a real task, such as formatting a document or creating a spreadsheet. Save your work so you can see your improvement over time.</p>
-          <div class="tip"><strong>Key takeaway:</strong> Digital confidence comes from regular practice, careful online habits, and learning one useful skill at a time.</div>
+        <!-- ARTICLE 1 -->
+        <article class="article" data-search="digital skills computer smartphone internet email online tools beginners">
+          <div class="article-head">
+            <span class="article-label">GUIDE 01 · DIGITAL GROWTH</span>
+            <h3>Digital Skills for Beginners</h3>
+            <div class="article-subtitle">Build confidence with computers, smartphones, internet tools, and everyday technology.</div>
+          </div>
+          <div class="article-body">
+            <p>Digital skills help people use technology to communicate, learn, organise information, and complete daily tasks. You do not need to master everything at once. Start with the basics, practise regularly, and gradually develop skills that are useful for your goals.</p>
+
+            <h4>01. MASTER THE BASICS OF YOUR DEVICE</h4>
+            <p>Learn how to use your smartphone or computer confidently. Practise opening applications, changing settings, connecting to Wi-Fi, taking screenshots, downloading documents, and organising files into folders. Understanding these simple functions makes more advanced tasks easier.</p>
+
+            <h4>02. BECOME A SMART INTERNET USER</h4>
+            <p>Learn to search for information effectively, open useful browser tabs, bookmark important pages, and download files from trusted sources. Use clear search phrases and compare reliable sources before accepting information as accurate.</p>
+
+            <h4>03. LEARN PROFESSIONAL EMAIL COMMUNICATION</h4>
+            <p>Create a suitable email address and practise writing clear messages. Use a meaningful subject line, greet the recipient politely, explain your purpose, and check attachments before sending. Always verify the recipient's address.</p>
+
+            <h4>04. PRACTISE PRODUCTIVITY TOOLS</h4>
+            <p>Start with document editors, spreadsheets, presentation tools, calendars, and cloud storage. Create a simple document, prepare a monthly expense sheet, and organise a weekly schedule. Small projects help turn theoretical knowledge into practical ability.</p>
+
+            <h4>05. PROTECT YOUR DIGITAL LIFE</h4>
+            <ul>
+              <li>Create strong, unique passwords for important accounts.</li>
+              <li>Enable two-factor authentication when available.</li>
+              <li>Update your operating system and applications.</li>
+              <li>Never share passwords or verification codes.</li>
+              <li>Check websites and download sources before trusting them.</li>
+            </ul>
+
+            <h4>06. TURN PRACTICE INTO PROGRESS</h4>
+            <p>Choose one skill and practise it for 15–30 minutes each day. For example, spend one day learning file management and another practising spreadsheet formulas. Keep examples of your work so you can measure improvement.</p>
+
+            <div class="highlight"><strong>KEY TAKEAWAY:</strong> Digital confidence grows through regular practice, safe online habits, and learning one useful skill at a time.</div>
+          </div>
         </article>
 
-        <article class="article" data-search="productivity time management planning focus goals routine distractions tasks">
-          <span class="article-number">GUIDE 02</span>
-          <h3>Everyday Productivity: Manage Your Time Better</h3>
-          <div class="article-meta">Practical Guide · Time Management</div>
-          <p>Productivity is not about staying busy every minute. It is about using your time and energy on tasks that matter. A simple plan can help reduce stress, improve focus, and make daily responsibilities easier to manage.</p>
-          <h4>1. Choose Three Important Tasks</h4>
-          <p>At the beginning of the day, write down the three tasks that would make the biggest difference if completed. You can still do smaller tasks, but give your most important work a clear place in your schedule.</p>
-          <h4>2. Break Large Tasks Into Small Steps</h4>
-          <p>A large task can feel difficult when its starting point is unclear. Divide it into actions that take 10–30 minutes. Instead of writing “learn computer skills,” write “practise typing for 15 minutes” or “create one spreadsheet.”</p>
-          <h4>3. Use Time Blocks</h4>
-          <p>Set aside a specific period for one kind of work. For example, spend 25 minutes on a task and then take a short break. Adjust the length to suit your attention span and the task you are doing.</p>
-          <h4>4. Reduce Distractions</h4>
-          <ul>
-            <li>Silence unnecessary notifications while working.</li>
-            <li>Keep only the tabs and applications you need open.</li>
-            <li>Choose a reasonably quiet workspace.</li>
-            <li>Keep your phone away when you do not need it.</li>
-          </ul>
-          <h4>5. Build a Realistic Routine</h4>
-          <p>Plan around your actual responsibilities, energy, and available time. A routine should support your life, not make you feel guilty whenever something changes. Leave room for meals, rest, family, and unexpected tasks.</p>
-          <h4>6. Review Your Progress</h4>
-          <p>At the end of the day, check what you completed and what needs to move to another day. Notice which distractions caused problems and choose one small improvement for tomorrow.</p>
-          <div class="tip"><strong>Try this today:</strong> Write down three priorities, complete the easiest first step, and give one important task your full attention.</div>
+        <!-- ARTICLE 2 -->
+        <article class="article" data-search="productivity time management focus goals routine planning tasks distractions">
+          <div class="article-head">
+            <span class="article-label">GUIDE 02 · PERSONAL EFFECTIVENESS</span>
+            <h3>Everyday Productivity: Manage Your Time Better</h3>
+            <div class="article-subtitle">Create better routines, protect your focus, and make progress on what matters.</div>
+          </div>
+          <div class="article-body">
+            <p>Productivity is not about being busy all day. It is about using time and energy wisely. A practical system can help you organise responsibilities, reduce unnecessary distractions, and make steady progress without expecting perfection.</p>
+
+            <h4>01. IDENTIFY YOUR THREE BIGGEST PRIORITIES</h4>
+            <p>At the beginning of the day, identify three tasks that would make the biggest difference. Write them down in simple language. Smaller tasks can be handled later, but important work should receive time and attention first.</p>
+
+            <h4>02. BREAK BIG GOALS INTO SMALL ACTIONS</h4>
+            <p>Large goals can feel overwhelming when you do not know where to begin. Divide them into manageable steps. Instead of writing “learn digital marketing,” write “study keyword research for 20 minutes” or “draft one practice advertisement.”</p>
+
+            <h4>03. USE FOCUSED WORK SESSIONS</h4>
+            <p>Choose one task, set a realistic time limit, and work without switching between unrelated activities. You could try 25 minutes of focused work followed by a short break. Adjust the session length to your needs.</p>
+
+            <h4>04. REMOVE COMMON DISTRACTIONS</h4>
+            <ul>
+              <li>Silence notifications that are not necessary.</li>
+              <li>Keep only relevant browser tabs open.</li>
+              <li>Prepare your materials before starting.</li>
+              <li>Choose a workspace with fewer interruptions.</li>
+              <li>Schedule specific times to check messages.</li>
+            </ul>
+
+            <h4>05. BUILD A ROUTINE YOU CAN MAINTAIN</h4>
+            <p>Plan around your real responsibilities and available energy. Include time for meals, rest, family, exercise, and unexpected tasks. A flexible routine is more useful than a perfect-looking schedule that is impossible to follow.</p>
+
+            <h4>06. REVIEW YOUR RESULTS EVERY EVENING</h4>
+            <p>Check which tasks you completed, what delayed your progress, and what needs attention tomorrow. Move unfinished tasks forward deliberately instead of repeatedly rewriting an unrealistic to-do list.</p>
+
+            <h4>07. MEASURE CONSISTENCY, NOT PERFECTION</h4>
+            <p>Missing one session does not mean your routine has failed. Restart with the next manageable action. Consistent effort over time is more sustainable than short bursts of intense work followed by exhaustion.</p>
+
+            <div class="highlight"><strong>TRY THIS TODAY:</strong> Write three priorities, choose one small first step, and complete it before opening unnecessary apps or messages.</div>
+          </div>
         </article>
 
-        <article class="article" data-search="online safety privacy passwords phishing scams internet security social media">
-          <span class="article-number">GUIDE 03</span>
-          <h3>Online Safety for Beginners</h3>
-          <div class="article-meta">Essential Guide · Privacy and Security</div>
-          <p>The internet is useful for learning, communication, shopping, and work, but it also contains scams and misleading information. Safe habits can help protect your accounts, personal information, and devices.</p>
-          <h4>1. Create Strong, Unique Passwords</h4>
-          <p>Do not reuse the same password for every account. Use long, unique passwords or passphrases and consider a reputable password manager. Protect your email account carefully because it may be used to reset other passwords.</p>
-          <h4>2. Recognise Phishing Attempts</h4>
-          <p>Scammers may send messages pretending to be banks, delivery services, employers, or familiar platforms. They may create urgency and ask you to click a link, provide account details, or reveal a verification code.</p>
-          <ul>
-            <li>Check the sender and website address carefully.</li>
-            <li>Do not open unexpected attachments.</li>
-            <li>Visit a service through its official app or website instead of a suspicious link.</li>
-            <li>Never share a one-time password or login verification code.</li>
-          </ul>
-          <h4>3. Protect Your Personal Information</h4>
-          <p>Think before posting your address, identity documents, travel plans, financial details, or private photographs. Review social media privacy settings and limit what strangers can see.</p>
-          <h4>4. Use Secure Connections</h4>
-          <p>Keep your device and applications updated. Avoid performing sensitive financial tasks on untrusted devices or networks. A website using HTTPS encrypts the connection, but it does not automatically prove that the website itself is trustworthy.</p>
-          <h4>5. Avoid Common Online Scams</h4>
-          <p>Be cautious of unexpected prizes, guaranteed investment profits, job offers requiring upfront payments, and people who pressure you to send money quickly. Verify claims independently before acting.</p>
-          <h4>6. If You Think an Account Is Compromised</h4>
-          <p>Use the official service to change your password, sign out other sessions if possible, enable two-factor authentication, and review recovery information. Contact your bank promptly if financial details may have been exposed.</p>
-          <div class="tip"><strong>Remember:</strong> Pause before clicking. Verify unexpected requests through an independent, trusted channel.</div>
+        <!-- ARTICLE 3 -->
+        <article class="article" data-search="online safety privacy cybersecurity passwords phishing scams internet security">
+          <div class="article-head">
+            <span class="article-label">GUIDE 03 · DIGITAL PROTECTION</span>
+            <h3>Online Safety for Beginners</h3>
+            <div class="article-subtitle">Protect your accounts, personal information, and devices with smarter online habits.</div>
+          </div>
+          <div class="article-body">
+            <p>The internet makes communication, shopping, education, and work easier. However, fake messages, fraudulent websites, and account theft can put personal information at risk. A few consistent precautions can make your online experience safer.</p>
+
+            <h4>01. CREATE STRONG, UNIQUE PASSWORDS</h4>
+            <p>Avoid using the same password for every service. Use long, unique passwords or passphrases, and consider a reputable password manager. Protect your primary email account carefully because it may be used to recover other accounts.</p>
+
+            <h4>02. RECOGNISE PHISHING AND FAKE MESSAGES</h4>
+            <p>Fraudulent messages may pretend to come from a bank, employer, delivery company, or social media platform. They often create urgency and ask you to click a link, download an attachment, or provide confidential information.</p>
+            <ul>
+              <li>Check the sender's details carefully.</li>
+              <li>Do not trust a message just because it uses a familiar logo.</li>
+              <li>Open the official app or type the known website address yourself.</li>
+              <li>Never share a one-time password or login verification code.</li>
+            </ul>
+
+            <h4>03. SHARE PERSONAL INFORMATION CAREFULLY</h4>
+            <p>Think before posting your home address, identity documents, financial information, travel plans, or private photographs. Review privacy settings and limit the information visible to strangers.</p>
+
+            <h4>04. KEEP YOUR DEVICES AND APPS UPDATED</h4>
+            <p>Install software updates from official sources. Remove applications you no longer use and review the permissions granted to installed apps. Avoid installing unknown files or applications from suspicious websites.</p>
+
+            <h4>05. UNDERSTAND WEBSITE SECURITY</h4>
+            <p>HTTPS helps encrypt information travelling between your browser and a website. However, it does not prove that a website is honest. Check the domain name carefully and independently verify unfamiliar services before sharing information or making payments.</p>
+
+            <h4>06. SPOT COMMON ONLINE SCAMS</h4>
+            <p>Be cautious of guaranteed profits, unexpected prizes, suspicious job offers requiring advance payments, and people who pressure you to transfer money immediately. Research claims independently and avoid making financial decisions under pressure.</p>
+
+            <h4>07. ACT QUICKLY IF AN ACCOUNT IS COMPROMISED</h4>
+            <p>Visit the official service, change your password, sign out other sessions if possible, and check recovery information. Enable two-factor authentication. If payment details may have been exposed, contact your financial institution promptly.</p>
+
+            <div class="highlight"><strong>SAFETY RULE:</strong> Pause, check, and verify before clicking links, sharing private information, or sending money.</div>
+          </div>
         </article>
 
-        <article class="article" data-search="freelancing beginner clients portfolio skills remote work proposals payments">
-          <span class="article-number">GUIDE 04</span>
-          <h3>Freelancing for Beginners</h3>
-          <div class="article-meta">Career Guide · Independent Work</div>
-          <p>Freelancing means providing services to clients on a project or contract basis. People freelance in writing, graphic design, video editing, programming, translation, virtual assistance, and many other fields. Income is not guaranteed, especially when starting.</p>
-          <h4>1. Choose One Service</h4>
-          <p>Start with a skill you already have or can realistically learn. Examples include editing short videos, designing simple social media posts, formatting documents, writing product descriptions, or providing administrative support.</p>
-          <h4>2. Practise and Build a Portfolio</h4>
-          <p>Create three to five sample projects that demonstrate what you can do. Personal practice projects are acceptable if clearly labelled as samples. Never claim that practice work was completed for a real client when it was not.</p>
-          <h4>3. Prepare a Clear Profile</h4>
-          <p>Explain what service you offer, who it helps, and what the client receives. Use a professional description, relevant samples, and realistic statements about your experience.</p>
-          <h4>4. Find Suitable Clients</h4>
-          <p>Explore reputable freelance marketplaces, professional communities, and legitimate business websites. Read each platform's rules and fees. Avoid mass messaging people with irrelevant offers.</p>
-          <h4>5. Write Better Proposals</h4>
-          <p>Refer to the client's actual needs, explain your approach, mention relevant experience, and ask any essential questions. Keep the proposal concise and specific rather than copying the same message to everyone.</p>
-          <h4>6. Agree on Scope and Payment</h4>
-          <ul>
-            <li>Write down the deliverables and deadline.</li>
-            <li>Agree on the price, payment method, and revision limits.</li>
-            <li>Use platform protections where available.</li>
-            <li>Keep records of agreed changes and completed work.</li>
-            <li>Do not pay suspicious fees to unlock a promised job.</li>
-          </ul>
-          <h4>7. Build a Professional Reputation</h4>
-          <p>Communicate respectfully, meet agreed deadlines, and be honest about problems. Ask satisfied clients for feedback when appropriate. Improve your service based on the work you complete.</p>
-          <div class="tip"><strong>Beginner action plan:</strong> Choose one service, create three samples, prepare a profile, and send a few carefully tailored proposals.</div>
-        </article>
+        <!-- ARTICLE 4 -->
+        <article class="article" data-search="freelancing remote work clients portfolio skills proposals online income beginners">
+          <div class="article-head">
+            <span class="article-label">GUIDE 04 · CAREER DEVELOPMENT</span>
+            <h3>Freelancing for Beginners</h3>
+            <div class="article-subtitle">Understand how to develop a service, showcase your skills, and approach potential clients.</div>
+          </div>
+          <div class="article-body">
+            <p>Freelancing means offering services to clients on a project or contract basis. Common services include writing, graphic design, video editing, translation, programming, and virtual assistance. Freelancing can create opportunities, but work and income are not guaranteed.</p>
 
-        <article class="article" data-search="personal budgeting money saving expenses income spending debt financial planning">
-          <span class="article-number">GUIDE 05</span>
-          <h3>Personal Budgeting for Beginners</h3>
-          <div class="article-meta">Money Guide · Everyday Financial Planning</div>
-          <p>A budget is a plan for how you will use the money available to you. It can help you understand spending, prepare for important expenses, and work towards savings goals. A useful budget should reflect your actual income and responsibilities.</p>
-          <h4>1. Calculate Your Income</h4>
-          <p>List the money you reasonably expect to receive during a month. If your income changes, use a cautious estimate rather than assuming every month will be your best month.</p>
-          <h4>2. Track Your Expenses</h4>
-          <p>For several weeks, record what you spend. Include housing, food, transport, utilities, education, debt payments, family responsibilities, subscriptions, and occasional expenses. Small purchases can add up when repeated frequently.</p>
-          <h4>3. Separate Needs and Wants</h4>
-          <p>Needs are essential expenses such as basic food, housing, and necessary transport. Wants are optional purchases that may improve enjoyment but can often be adjusted. Some expenses fall between the two, depending on your circumstances.</p>
-          <h4>4. Create Spending Categories</h4>
-          <p>Set practical limits for your main categories. A popular starting framework is 50% for needs, 30% for wants, and 20% for savings and debt repayment, but these percentages are not suitable for everyone. Adjust them to your income and essential costs.</p>
-          <h4>5. Start an Emergency Fund</h4>
-          <p>If possible, save a small amount regularly for unexpected costs such as repairs or a temporary loss of income. Begin with a manageable target and build gradually. Keep emergency savings accessible and separate from everyday spending money.</p>
-          <h4>6. Plan for Debt and Large Expenses</h4>
-          <p>Write down debt balances, due dates, interest rates, and required payments. Avoid taking on new debt without understanding the total cost. For annual or occasional expenses, estimate the amount and set aside money over time if possible.</p>
-          <h4>7. Review Your Budget Monthly</h4>
-          <p>Compare your plan with actual spending. If a category repeatedly exceeds its limit, adjust the budget to reflect reality and look for manageable changes. A budget is a tool for decision-making, not a reason to feel ashamed.</p>
-          <div class="tip"><strong>Simple first step:</strong> Write down your monthly income, essential expenses, debts, and any amount you can realistically save.</div>
-        <
+            <h4>01. CHOOSE ONE CLEAR SERVICE</h4>
+            <p>Start with a skill you already possess or can realistically develop. Examples include editing short videos, creating social media graphics, formatting documents, writing product descriptions, or providing administrative support.</p>
+
+            <h4>02. DEVELOP YOUR SKILLS BEFORE SELLING THEM</h4>
+            <p>Study examples, practise the tools, and complete sample projects. Focus on producing work that meets a clear standard rather than trying to offer every possible service at once.</p>
+
+            <h4>03. BUILD A SIMPLE, HONEST PORTFOLIO</h4>
+            <p>Create three to five samples that demonstrate your abilities. You can use personal practice projects, provided you label them honestly. Explain the goal of each project and what you created.</p>
+
+            <h4>04. PREPARE A PROFESSIONAL PROFILE</h4>
+            <p>Describe the service you offer, the type of client you can help, and what the client will receive. Use clear language, relevant examples, and realistic claims about your experience.</p>
+
+            <h4>05. FIND RELEVANT CLIENT OPPORTUNITIES</h4>
+            <p>Explore reputable freelance marketplaces, professional communities, and legitimate business websites. Read platform rules, understand fees, and target projects that match your current skills. Avoid sending the same irrelevant message to large numbers of people.</p>
+
+            <h4>06. WRITE SPECIFI
