@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BrightPath Guides shares practical, easy-to-follow guides on technology, productivity, digital skills, and everyday learning.">
+  <meta name="theme-color" content="#10213b">
+  <title>BrightPath Guides | Learn Something Useful</title>
+
+  <style>
+    :root {
+      --navy: #10213b;
+      --blue: #2563eb;
+      --light: #f4f7fc;
+      --text: #243247;
+      --muted: #637087;
+      --white: #ffffff;
+      --border: #e4eaf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .logo span { color: var(--blue); }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #44516a;
+    }
+
+    nav a:hover, .text-link:hover { color: var(--blue); }
+
+    .hero {
+      background: linear-gradient(135deg, #10213b, #1e4380);
+      color: var(--white);
+      padding: 86px 0 78px;
+    }
+
+    .hero-content { max-width: 760px; }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid #6d8fca;
+      border-radius: 30px;
+      color: #dce8ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.12;
+      margin: 22px 0 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #e1e9f8;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hero .button {
+      background: white;
+      color: var(--navy);
+      margin-top: 14px;
+    }
+
+    .section { padding: 64px 0; }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 36px);
+      line-height: 1.25;
+      margin: 0 0 10px;
+    }
+
+    .section-heading p, .muted { color: var(--muted); }
+
+    .search-wrap {
+      margin: 22px 0 28px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid #d7dfed;
+      border-radius: 10px;
+      background: white;
+      font-size: 16px;
+      outline-color: var(--blue);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(16, 33, 59, .035);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      background: #eaf1ff;
+      border-radius: 12px;
+      font-size: 23px;
+      margin-bottom: 17px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 17px;
+    }
+
+    .text-link {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .empty {
+      display: none;
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    .about {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .info-box {
+      padding: 24px;
+      background: var(--light);
+      border-radius: 12px;
+    }
+
+    .info-box h3 { margin-top: 0; color: var(--navy); }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    footer p { color: #c7d3e8; font-size: 13px; }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-content { grid-template-columns: 1fr; }
+      .nav { padding: 14px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 14px; }
+    }
+
+    @media (max-width: 540px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0; }
+      .section { padding: 45px 0; }
+      nav a { font-size: 13px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="index.html">BrightPath<span> Guides</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#guides">Guides</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">Practical Knowledge for Everyday Life</span>
+        <h1>Learn Something Useful. Move Forward with Confidence.</h1>
+        <p>
+          Explore clear, practical guides designed to help you understand
+          digital tools, build useful skills, improve productivity, and make
+          more informed everyday decisions.
+        </p>
+        <a class="button" href="#guides">Explore Our Guides</a>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Explore Our Guides</h2>
+          <p>
+            Browse our topics and find information that matches your interests.
+            We aim to make useful knowledge easier to understand and apply.
+          </p>
+        </div>
+
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="guideSearch"
+            placeholder="Search guides by topic..."
+            aria-label="Search guides"
+          >
+        </div>
+
+        <div class="grid" id="guideGrid">
+          <article class="card" data-search="digital skills technology online safety">
+            <div class="card-icon" aria-hidden="true">💻</div>
+            <h3>Digital Skills for Beginners</h3>
+            <p>
+              Learn the basics of working with digital tools, managing files,
+              browsing effectively, and developing practical computer skills.
+            </p>
+            <a class="text-link" href="digital-skills.html">Read the Guide →</a>
+          </article>
+
+          <article class="card" data-search="productivity time management planning habits">
+            <div class="card-icon" aria-hidden="true">⏱️</div>
+            <h3>Everyday Productivity</h3>
+            <p>
+              Explore simple planning methods, prioritization techniques,
+              and routines that can help you use your time more effectively.
+            </p>
+            <a class="text-link" href="productivity.html">Read the Guide →</a>
+          </article>
+
+          <article class="card" data-search="online safety privacy passwords internet security">
+            <div class="card-icon" aria-hidden="true">🔐</div>
+            <h3>Online Safety Basics</h3>
+            <p>
+              Understand password security, suspicious links, privacy settings,
+              and practical ways to protect your accounts online.
+            </p>
+            <a class="text-link" href="online-safety.html">Read the Guide →</a>
+          </article>
+
+          <article class="card" data-search="freelancing remote work portfolio clients skills">
+            <div class="card-icon" aria-hidden="true">🌐</div>
+            <h3>Getting Started with Freelancing</h3>
+            <p>
+              Discover how to identify a service, build a beginner portfolio,
+              communicate with clients, and understand common freelance terms.
+            </p>
+            <a class="text-link" href="freelancing.html">Read the Guide →</a>
+          </article>
+
+          <article class="card" data-search="budget money spending saving personal finance">
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3>Personal Budgeting Basics</h3>
+            <p>
+              Learn how to organize expenses, create a simple budget,
+              track spending, and set realistic savings goals.
+            </p>
+            <a class="text-link" href="budgeting.html">Read the Guide →</a>
+          </article>
+
+          <article class="card" data-search="learning study notes goals education">
+            <div class="card-icon" aria-hidden="true">📚</div>
+            <h3>Better Learning Habits</h3>
+            <p>
+              Explore note-taking, study planning, active recall, and other
+              learning techniques you can adapt to your own routine.
+            </p>
+            <a class="text-link" href="learning-habits.html">Read the Guide →</a>
+          </article>
+        </div>
+
+        <p class="empty" id="emptyMessage">No guides match your search. Try another keyword.</p>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-content">
+        <div>
+          <h2>About BrightPath Guides</h2>
+          <p>
+            BrightPath Guides is an educational website focused on making
+            everyday information clear, accessible, and practical. Our goal is
+            to help readers explore useful topics without unnecessary jargon.
+          </p>
+          <p>
+            We believe helpful content should explain the basics, provide
+            realistic examples, and encourage readers to make their own
+            informed decisions. We aim to improve our guides as our website grows.
+          </p>
+        </div>
+
+        <aside class="info-box">
+          <h3>Our Content Principles</h3>
+          <p><strong>Clarity:</strong> Explain topics in straightforward language.</p>
+          <p><strong>Practicality:</strong> Focus on useful information and examples.</p>
+          <p><strong>Responsibility:</strong> Encourage readers to verify important information.</p>
+          <p><strong>Improvement:</strong> Review content for accuracy and usefulness.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Questions or Suggestions?</h2>
+          <p>
+            We welcome reader feedback, corrections, and suggestions for future
+            topics. Visit our Contact page to learn how to reach us.
+          </p>
+        </div>
+        <a class="button" href="contact.html">Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <a class="logo" href="index.html" style="color:white">BrightPath<span> Guides</span></a>
+        <p>Practical knowledge for everyday learning.</p>
+        <p>© <span id="year"></span> BrightPath Guides. All rights reserved.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const searchInput = document.getElementById("guideSearch");
+    const cards = Array.from(document.querySelectorAll("#guideGrid .card"));
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    searchInput.addEventListener("input", function () {
+      const query = this.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach(function (card) {
+        const searchableText =
+          (card.innerText + " " + (card.dataset.search || "")).toLowerCase();
+        const matches = searchableText.includes(query);
+
+        card.style.display = matches ? "" : "none";
+        if (matches) visibleCount++;
+      });
+
+      emptyMessage.style.display = visibleCount ? "none" : "block";
+    });
+  </script>
+</body>
+  </html>
+  
